@@ -1,6 +1,6 @@
 
 # EX 3E Generate Permutations using Backtracking  Approach.
-## DATE:18/09/25
+## DATE:
 ## AIM:
 To write a Java program to for given constraints.
 Given an array nums of distinct integers, return all the possible Permutation. You can return the answer in any order.
@@ -9,24 +9,24 @@ Input: nums = [1,2,3]
 Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 For example:
 ## Algorithm
-1.Start and read the array of numbers.
-
-2.Use a recursive backtracking function to build permutations.
-
-3.At each step, add an unused element to the current list.
-
-4.When the current list size equals the array length, add it to the result.
-
-5.Backtrack by removing the last element and continue until all permutations are generated.
-  
+1. Input Processing:
+Read the array elements from user input, remove brackets ([]), split by commas, and store them in an integer array nums.
+2. Start Permutation Generation:
+Initialize an empty list ans to store all permutations and call the recursive backtrack() function with an initially empty list curr.
+3. Recursive Backtracking Logic:
+If curr (the current permutation) has the same length as nums, add a copy of curr to ans.
+Otherwise, iterate through each number in nums.
+4.  Build and Explore Permutations:
+For each number not already in curr, add it to curr, recursively call backtrack() to build further, and then remove it (backtrack) to explore other possibilities.
+5.  Output Result:
+After recursion completes, print all generated permutations stored in ans. 
 
 ## Program:
 ```
 /*
 Program to implement Reverse a String
-Developed by: SHIVRAJ R 
-Register Number: 212223110051 
-*/
+Developed by:SHIVRAJ R
+Register Number:212223110051
 import java.util.*;
 
 public class Solution {
@@ -70,13 +70,12 @@ public class Solution {
         scanner.close();
     }
 }
-
+ 
+*/
 ```
 
 ## Output:
-
-<img width="1235" height="208" alt="image" src="https://github.com/user-attachments/assets/df7e1dc5-3047-4b10-995a-dd59bac259ba" />
-
+<img width="1246" height="239" alt="image" src="https://github.com/user-attachments/assets/45b05d0f-2a94-4edc-9b76-4492737efec6" />
 
 ## Result:
 The program successfully implemented and the expected output is verified.
