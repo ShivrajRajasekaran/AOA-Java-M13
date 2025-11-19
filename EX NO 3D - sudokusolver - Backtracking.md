@@ -1,6 +1,6 @@
 
 # EX 3D Sudoku solver - Backtracking.
-## DATE:15/09/25
+## DATE:
 ## AIM:
 To write a Java program to solve a Sudoku puzzle by filling the empty cells.
 
@@ -10,23 +10,37 @@ For example:
 
 
 ## Algorithm
-1.Start and read the 9×9 Sudoku grid (use 0 for empty cells).
-
-2.Find the next empty cell in the board.
-
-3.Try placing digits 1–9 and check if placement is safe (row, column, and 3×3 box).
-
-4.If safe, place the number and recursively solve the next cell; if not, backtrack.
-
-5.Continue until the board is completely filled and display the solved Sudoku. 
+1. Start the program and read the 9×9 Sudoku board.
+Empty cells are represented by 0.
+2. Define a function isSafe(board, row, col, num) to check if placing num in position (row, col) is valid:
+Check that num does not already exist in the same row.
+Check that num does not already exist in the same column.
+Check that num does not exist in the 3×3 subgrid containing (row, col).
+Return true if all checks pass; otherwise, return false.
+3. Define a recursive function solveSudoku(board, row, col):
+If (row == 8 && col == 9), all cells are filled → return true (solution found).
+If col == 9, move to the next row (row + 1) and set col = 0.
+If the current cell is already filled (non-zero), call solveSudoku for the next column.
+For an empty cell (0):
+Try placing numbers 1 through 9:
+If isSafe() returns true, temporarily place the number.
+Recursively call solveSudoku() for the next cell.
+If recursion succeeds, return true.
+If not, backtrack by resetting the cell to 0.
+If no number can be placed, return false.
+4. In the main() method:
+Input the Sudoku grid from the user.
+Call solveSudoku(board, 0, 0).
+If it returns true, print the solved Sudoku grid using printBoard().
+Otherwise, print “No solution exists.”
+5. End the program.  
 
 ## Program:
 ```
 /*
 Program to implement Reverse a String
 Developed by: SHIVRAJ R
-Register Number: 212223110051
-*/
+Register Number:212223110051
 import java.util.Scanner;
 
 public class SudokuSolver {
@@ -53,24 +67,24 @@ public class SudokuSolver {
 
     // Recursive backtracking solver
     static boolean solveSudoku(int[][] board, int row, int col) {
-        //Type your code here
-        if(row==8 && col==9)
-        return true;
+        if(row==8&&col==9)
+            return true;
         if(col==9){
             row++;
             col=0;
         }
         if(board[row][col]!=0)
-        return solveSudoku(board,row,col+1);
+            return solveSudoku(board,row,col+1);
         for(int num=1;num<=9;num++){
             if(isSafe(board,row,col,num)){
                 board[row][col]=num;
                 if(solveSudoku(board,row,col+1))
-                return true;
+                    return true;
                 board[row][col]=0;
             }
         }
         return false;
+        //Type your code here
     }
 
     // Utility to print the board
@@ -108,11 +122,12 @@ public class SudokuSolver {
     }
 }
 
+*/
 ```
 
 ## Output:
+<img width="670" height="621" alt="image" src="https://github.com/user-attachments/assets/c914410d-005a-40e6-ae09-ad5897cb6202" />
 
-<img width="644" height="591" alt="image" src="https://github.com/user-attachments/assets/fab2764a-0973-46bb-8996-f2d23c0df4ad" />
 
 
 ## Result:
