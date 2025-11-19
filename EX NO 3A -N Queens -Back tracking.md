@@ -1,6 +1,6 @@
 
 # EX 3A N Queens Problem - Backtracking Approach.
-## DATE:10/09/25
+## DATE:
 ## AIM:
 To Write a Java program for N queens using backtracking approach.
 You are given an integer N. For a given N x N chessboard, find a way to place 'N' queens such that no queen can attack any other queen on the chessboard.
@@ -18,24 +18,25 @@ If solution exists Print a binary matrix as output that has 1s for the cells whe
 If there is no solution to the problem  print  "Solution does not exist"
 
 ## Algorithm
-1.Start and read the value of N (chessboard size).
-
-2.Place queens column by column using recursion.
-
-3.Check if the current position is safe (no queen in row, upper-left, or lower-left diagonal).
-
-4.If safe, place the queen and recursively place the rest; if not, backtrack.
-
-5.Print the board if all queens are placed, else display “No solution exists.”   
+1. Initialize an N × N chessboard with all elements as 0.
+2. Place queens column by column starting from column 0.
+3. For each column:
+Try placing a queen in each row one by one.
+Check safety using the isSafe() function:
+No queen in the same row (left side).
+No queen in the upper-left diagonal.
+No queen in the lower-left diagonal.
+4.  If a position is safe, place the queen (board[i][col] = 1) and recur for the next column.
+5.  If placing in the current column fails, backtrack — remove the queen (board[i][col] = 0) and try next row.
+6.  If all queens are placed successfully, print the board as a valid solution.
+7.  If no configuration works, print “Solution does not exist.”
 
 ## Program:
 ```
 /*
 Program to implement Reverse a String
-Developed by: SHIVRAJ R 
-Register Number: 212223110051
-*/
-
+Developed by: SHIVRAJ R
+Register Number:212223110051
 import java.util.Scanner;
 
 public class NQueens {
@@ -73,24 +74,18 @@ public class NQueens {
 
     // Recursive utility function to solve N-Queens
     static boolean solveNQUtil(int[][] board, int col) {
-        //Add your code Here
         if(col>=N)
-        {
             return true;
-        }
-        for(int i=0;i<N;i++)
-        {
-            if(isSafe(board,i,col))
-            {
+        for(int i=0;i<N;i++){
+            if(isSafe(board,i,col)){
                 board[i][col]=1;
                 if(solveNQUtil(board,col+1))
-                {
-                    return true;
-                }
+                return true;
                 board[i][col]=0;
             }
         }
         return false;
+        //Add your code Here
     }
 
     
@@ -114,11 +109,12 @@ public class NQueens {
     }
 }
 
+*/
 ```
 
 ## Output:
+<img width="676" height="295" alt="image" src="https://github.com/user-attachments/assets/82f0c38f-1e4f-47bd-9bc5-dae636176df6" />
 
-<img width="618" height="256" alt="image" src="https://github.com/user-attachments/assets/3f470b8d-bf9c-487e-8478-2a12b2c9581a" />
 
 
 ## Result:
